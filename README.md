@@ -58,7 +58,7 @@ It performs the reverse operation of an encoder. Used in I/O selection, and cont
   ## Output Waveform
 ![image](https://github.com/user-attachments/assets/a10a9bdf-cde5-4216-b5fa-59a4085735b3)
 
-### Simulation Features
+### Learning Outcome
 
 * Inputs are provided using pulse voltage sources.
 * Outputs are verified using waveform analysis in LTSpice.
@@ -67,4 +67,4 @@ It performs the reverse operation of an encoder. Used in I/O selection, and cont
 
 ### Outcome
 
-The simulation helped understand how encoding compresses multiple signals into a smaller binary output, and how decoding (priority encoding) selects the most important input from many. LTSpice was useful in visualizing real-time logic transitions and testing digital logic behavior without physical hardware.
+The simulation helped understand how encoding compresses multiple signals into a smaller binary output, and how decoding turns ouput HIGH based on input. LTSpice was useful in visualizing real-time logic transitions and testing digital logic behavior without physical hardware.
