@@ -1,34 +1,62 @@
 
-# 3:8 Encoder and 8:3 Decoder Design using LTSpice
+# 8:3 Encoder and 3:8 Decoder Design using LTSpice
 
 ### Overview
 
-This project demonstrates the design and simulation of a **3:8 Encoder** and **8:3 Decoder** (priority encoder) using **LTSpice**. The purpose is to understand how digital encoding and decoding circuits work using basic logic gates like AND, OR, and NOT.
+This project demonstrates the design and simulation of a **8:3 Encoder** and **3:8 Decoder**  using **LTSpice**. The purpose is to understand how digital encoding and decoding circuits work using basic logic gates like AND, OR, and NOT.
 
 ### Tools Used
 
 * **LTSpice**: Circuit simulation tool by Analog Devices
-* **Logic Gates**: AND, OR, NOT (from the LTSpice digital library)
+* **Logic Gates**: AND, OR, NOT
 * **Pulse Voltage Sources**: Used as input signals for simulation
 
-### 3:8 Encoder
+### 8:3 Encoder
 
-A 3:8 encoder takes 8 input lines and converts the active input into a 3-bit binary output. It is used to reduce the number of data lines and simplify communication in digital systems. In this design:
+An 8:3 encoder is a combinational circuit that takes 8 input lines (0–7) and produces a 3-bit binary output (A0,A1,A2).
+It assumes only one input is HIGH at a time.
+This circuit compresses multiple input lines into fewer output bits. Commonly used in applications like keypads, and signal compression.
 
-* Only one input is HIGH at any time.
-* Output changes based on which input is active.
+  ## 8:3 Encoder Truth Table
 
-![image](https://github.com/user-attachments/assets/87b148cd-920e-440b-bbb2-31a2b9991ef4)
+| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | A2 | A1 | A0 |
+|----|----|----|----|----|----|----|----|----|----|----|
+| 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  |
+| 0  | 0  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 1  |
+| 0  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 1  | 0  |
+| 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 0  | 1  | 1  |
+| 0  | 0  | 0  | 1  | 0  | 0  | 0  | 0  | 1  | 0  | 0  |
+| 0  | 0  | 1  | 0  | 0  | 0  | 0  | 0  | 1  | 0  | 1  |
+| 0  | 1  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 1  | 0  |
+| 1  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 1  | 1  |
 
-![image](https://github.com/user-attachments/assets/a10a9bdf-cde5-4216-b5fa-59a4085735b3)
-
-### 8:3 Decoder
-
-When this decoder is enabled, it's one of the eight outputs will be active for each combination of inputs. The operation of this 3-line to 8-line decoder can be analyzed with the help of its function table which is given below.
-
+  ## LTSpice Circuit
 ![image](https://github.com/user-attachments/assets/72e8d89e-7cd4-4cf7-acd4-622af8bc4d40)
 
+  ## Output Waveform
 ![image](https://github.com/user-attachments/assets/c8ba10d7-1abb-44e2-ad8e-7521f59e0461)
+
+### 3:8 Decoder
+
+A 3:8 decoder is a combinational circuit that takes a 3-bit input (A, B, C) and activates one of 8 outputs (Z0–Z7) based on the binary value of the input. Exactly one output is HIGH at any time.
+It performs the reverse operation of an encoder. Used in I/O selection, and control logic.
+
+| A | B | C | Z0 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 |
+|---|---|---|----|----|----|----|----|----|----|----|
+| 0 | 0 | 0 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |
+| 0 | 0 | 1 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |
+| 0 | 1 | 0 |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |
+| 0 | 1 | 1 |  0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |
+| 1 | 0 | 0 |  0 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |
+| 1 | 0 | 1 |  0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |
+| 1 | 1 | 0 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |
+| 1 | 1 | 1 |  1 |  0 |  0 |  0 |  0 |  0 |  0 |  0 |
+
+  ## LTSpice Circuit
+![image](https://github.com/user-attachments/assets/87b148cd-920e-440b-bbb2-31a2b9991ef4)
+
+  ## Output Waveform
+![image](https://github.com/user-attachments/assets/a10a9bdf-cde5-4216-b5fa-59a4085735b3)
 
 ### Simulation Features
 
